@@ -1,9 +1,10 @@
 import main
 import requests
 # get api
+url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/{0}/{1}"
 def get_food():
     global url
-    url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch"
+    the_url = url.format('recipes' , 'complexSearch')
     # asking about user specfcation
 
     dish_type = input('what is the dish type')
@@ -33,6 +34,6 @@ headers = {
 	"X-RapidAPI-Host": main.X_RapidAPI_Host()
 }
 
-response = requests.get(url, headers=headers, params=querystring)
+response = requests.get(the_url, headers=headers, params=querystring)
 print()
 print(response.json())
