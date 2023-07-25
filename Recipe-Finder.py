@@ -1,7 +1,7 @@
 import main
 import requests
 # get api
-def get_api():
+def get_food():
     global url
     url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch"
     # asking about user specfcation
@@ -19,7 +19,7 @@ def get_api():
 
      try:
         global  querystring
-        get_api()
+        get_food()
         querystring = {"query": dish_type, "cuisine": cuisine, "diet": diet,
                    "intolerances": intolerances , "includeIngredients":includeIngredients}
      except Exception:
