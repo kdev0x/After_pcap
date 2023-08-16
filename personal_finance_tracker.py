@@ -2,7 +2,7 @@ import pandas as pd
 # - means negtive
 class Bank:
     
-    def __init__(self ,balance  ,  income , expensses , investing_amount , investing_return ):
+    def _init_(self ,balance  ,  income , expensses , investing_amount , investing_return ):
         self.balance =balance
         self.income =  income
         self.expensses = expensses
@@ -18,9 +18,9 @@ class Bank:
     
                 
         
-class Expennses(Bank):
-     def __init__(self, balance  , income , expensses ,investing_amount , investing_return):
-          super().__init__(balance  ,  income , expensses ,investing_amount , investing_return )
+class Expenses(Bank):
+     def _init_(self, balance  , income , expensses ,investing_amount , investing_return):
+          super()._init_(balance  ,  income , expensses ,investing_amount , investing_return )
 
           
 
@@ -28,6 +28,7 @@ class Expennses(Bank):
           print('youre old balance is', self.balance)
           self.balance += self.income - self.expensses +self.investing_returns 
           print("youre monthly stats" , self.income_dict)
+          self.income_dict[0][0] = self.balance
           self.df = pd.DataFrame(self.income_dict ,columns=['balance', 'income' , 'expensses' , 'investing_amount' , 'investing return'])
           print(self.df)
 
@@ -45,8 +46,8 @@ class Expennses(Bank):
           
 class BudgetGoal(Bank):
      
-     def __init__(self,balance ,  income , expensses , investing_amount , investing_return  , income_goal ,expenses_goal ,investing_return_goal  ):
-          super().__init__(balance ,  income , expensses , investing_amount , investing_return )
+     def _init_(self,balance ,  income , expensses , investing_amount , investing_return  , income_goal ,expenses_goal ,investing_return_goal  ):
+          super()._init_(balance ,  income , expensses , investing_amount , investing_return )
           self.income_goal = income_goal 
           self.expenses_goal = expenses_goal
           self. investing_return_goal = investing_return_goal
@@ -71,10 +72,10 @@ class BudgetGoal(Bank):
                print('youre expenses goal is equal to youre expenses')
           
 
-          if self.investing_return_goal < self.investing_returns:
+          if self.investing_return_goal > self.investing_returns:
                print('Youre investing return goal is more then expected by',(self.investing_return_goal - self.investing_returns) / self.investing_return_goal * 100,"%")
 
-          elif  self.investing_return_goal > self.investing_returns:
+          elif  self.investing_return_goal < self.investing_returns:
                 print('Youre income goal is less then expected by',(self.investing_returns - self.investing_return_goal) / self.investing_returns * 100,"%")
 
           elif self.investing_return_goal == self.investing_returns:
@@ -82,7 +83,7 @@ class BudgetGoal(Bank):
 
           
 class Transactions:
-     def __init__ (self , name , account_number  ,transaction_amount,date):
+     def _init_ (self , name , account_number  ,transaction_amount,date):
             self.name = name
             self.account_number = account_number
             self.transaction_amount = transaction_amount
@@ -126,7 +127,7 @@ if option == "A":
         investing_returns  = int(input('please enter youre invsting return'))
         investing_amount = int(input('please enter youre invsting amount'))
 
-        obj_1 = Expennses(balance,income,expensses,investing_amount,investing_returns)
+        obj_1 = Expenses(balance,income,expensses,investing_amount,investing_returns)
         obj_1.new_balance()
         
         withdrall=input("do you want to withdrall money Y:N")
